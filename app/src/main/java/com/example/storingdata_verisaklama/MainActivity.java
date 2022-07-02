@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ///////////////////////////////////////
-        sharedPreferences = this.getSharedPreferences("om.example.storingdata_verisaklama" , Context.MODE_PRIVATE);
+        sharedPreferences = this.getSharedPreferences("com.example.storingdata_verisaklama" , Context.MODE_PRIVATE);
         editTextTextPersonName = findViewById(R.id.editTextTextPersonName);
         editTextNumber = findViewById(R.id.editTextNumber);
         textView = findViewById(R.id.textView);
