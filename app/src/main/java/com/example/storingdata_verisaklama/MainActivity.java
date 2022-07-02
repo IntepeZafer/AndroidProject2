@@ -32,13 +32,9 @@ public class MainActivity extends AppCompatActivity {
             textView.setText("Enter Name: " + name);
             textView2.setText("Enter Birthday: " + age);
         }
-        else{
-            textView.setText("Enter Name: " + name);
-            textView2.setText("Enter Birthday: " + age);
-        }
     }
     public void save(View view){
-        if(editTextTextPersonName.getText().toString().matches("") || editTextNumber.getText().toString().matches("")){
+        if(!editTextTextPersonName.getText().toString().matches("") || !editTextNumber.getText().toString().matches("")){
             textView.setText("Name: " + editTextTextPersonName.getText());
             textView2.setText("Age: " + editTextNumber.getText());
             String name = editTextTextPersonName.getText().toString();
@@ -46,13 +42,15 @@ public class MainActivity extends AppCompatActivity {
             sharedPreferences.edit().putString("strogeName" , name).apply();
             sharedPreferences.edit().putString("strogeAge" , age).apply();
         }
-        else{
-            textView.setText("Name: " + editTextTextPersonName.getText());
-            textView2.setText("Age: " + editTextNumber.getText());
-            String name = editTextTextPersonName.getText().toString();
-            String age = editTextNumber.getText().toString();
-            sharedPreferences.edit().putString("strogeName" , name).apply();
-            sharedPreferences.edit().putString("strogeAge" , age).apply();
+    }
+    public void delete(View view){
+        String strogeName = sharedPreferences.getString("strogeName" , "");
+        String strogeAge = sharedPreferences.getString("strogeAge" , "");
+        if(strogeName != "" || strogeAge != ""){
+            sharedPreferences.edit().remove("strogeName").apply();
+            sharedPreferences.edit().remove("strogeAge").apply();
+            textView.setText("Enter Name: ");
+            textView2.setText("Enter Age: ");
         }
     }
 }
